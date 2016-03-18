@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		#container{
+			width:400px;
+			height:400px;
+			border:1px solid gray;
+			position:relative;
+			overflow: hidden;
+		}
+		#content{
+			/*height:800px;*/
+			width:380px;
+			position:absolute;
+			left:0;
+		}
+		#scroll{
+			height:400px;
+			width:20px;
+			position:absolute;
+			right:0;
+			background-color: gray;
+		}
+		#btn{
+			width:20px;
+			height:20px;
+			display: block;
+			position: absolute;
+			top:0;
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<div id="content">
+			怒ID和我从不觉得才能把我丢出比较快乐嗔怒我；保持健康但是不能吃你凑女金凤凰你从未能凑合欺负你了今年粗人几位女就能玩；去护额v局；额帮我v人就哦v为u工程部不能吃比如我碰过怒ID和我从不觉得才能把我丢出比较快乐嗔怒我；保持健康但是不能吃你凑女金凤凰你从未能凑合欺负你了今年粗人几位女就能玩；去护额v局；额帮我v人就哦v为u工程部不能吃比如我碰过怒ID和我从不觉得才能把我丢出比较快乐嗔怒我；保持健康但是不能吃你凑女金凤凰你从未能凑合欺负你了今年粗人几位女就能玩；去护额v局；额帮我v人就哦v为u工程部不能吃比如我碰过怒ID和我从不觉得才能把我丢出比较快乐嗔怒我；保持健康但是不能吃你凑女金凤凰你从未能凑合欺负你了今年粗人几位女就能玩；去护额v局；额帮我v人就哦v为u工程部不能吃比如我碰过怒ID和我从不觉得才能把我丢出比较快乐嗔怒我；保持健康但是不能吃你凑女金凤凰你从未能凑合欺负你了今年粗人几位女就能玩；去护额v局；额帮我v人就哦v为u工程部不能吃比如我碰过怒ID和我从不觉得才能把我丢出比较快乐嗔怒我；保持健康但是不能吃你凑女金凤凰你从未能凑合欺负你了今年粗人几位女就能玩；去护额v局；额帮我v人就哦v为u工程部不能吃比如我碰过怒ID和我从不觉得才能把我丢出比较快乐嗔怒我；保持健康但是不能吃你凑女金凤凰你从未能凑合欺负你了今年粗人几位女就能玩；去护额v局；额帮我v人就哦v为u工程部不能吃比如我碰过怒ID和我从不觉得才能把我丢出比较快乐嗔怒我；保持健康但是不能吃你凑女金凤凰你从未能凑合欺负你了今年粗人几位女就能玩；去护额v局；额帮我v人就哦v为u工程部不能吃比如我碰过怒ID和我从不觉得才能把我丢出比较快乐嗔怒我；保持健康但是不能吃你凑女金凤凰你从未能凑合欺负你了今年粗人几位女就能玩；去护额v局；额帮我v人就哦v为u工程部不能吃比如我碰过和我从不觉得才能把我丢出比较快乐嗔怒我；保持健康但是不能吃你凑女金凤凰你从未能凑合欺负你了今年粗人几位女就能玩；去护额v局；额帮我v人就哦v为u工程部不能吃比如我碰过怒ID和我从不觉得才能把我丢出比较快乐嗔怒我；保持健康但是不能吃你凑女金凤凰你从未能凑合欺负你了今年粗人几位女就能玩；去护额v局；额帮我v人就哦v为u工程部不能吃比如我碰过怒ID和我从不觉得才能把我丢出比较快乐嗔怒我；保持健康但是不能吃你凑女金凤凰你从未能凑合欺负你了今年粗人几位女就能玩；去护额v局；额帮我v人就哦v为u工程部不能吃比如我碰过怒ID和我从不觉得才能把我丢出比较快乐嗔怒我；保持健康但是不
+		</div>
+		<div id="scroll">
+			
+			<span id="btn"></span>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var obtn=document.getElementById("btn");
+		var oscroll=document.getElementById("scroll");
+		var ocontainer=document.getElementById("container");
+		var ocontent=document.getElementById("content");
+		obtn.onmousedown=function(e){
+			e=e||window.event;
+			var disY=e.clientY-obtn.offsetTop-ocontainer.offsetTop;
+			document.onmousemove=function(e){
+				e=e||window.event;
+				var itop=e.clientY-disY-ocontainer.offsetTop;
+				var p=itop/(oscroll.offsetHeight-obtn.offsetHeight);
+				var ltop=-(ocontent.offsetHeight-ocontainer.offsetHeight)*p;
+				// alert(ltop);
+				if(itop<0)
+					itop=0;
+				if(itop>=oscroll.offsetHeight-obtn.offsetHeight)
+					itop=oscroll.offsetHeight-obtn.offsetHeight;
+				obtn.style.top=itop+'px';
+				if(ltop>0){
+					ltop=0;
+				}
+				if(ltop<-(ocontent.offsetHeight-ocontainer.offsetHeight))
+					ltop=-(ocontent.offsetHeight-ocontainer.offsetHeight);
+				ocontent.style.top=ltop+'px';
+
+				return false;
+			};
+			document.onmouseup=function(){
+				document.onmousemove=null;
+			};
+		};
+	</script>
+</body>
+</html>

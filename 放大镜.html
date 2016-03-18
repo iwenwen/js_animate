@@ -1,0 +1,133 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+		}
+		#small{
+			position:relative;
+			margin-top:10px;
+			width:200px;
+			height:200px;
+			border:1px solid #ccc;
+			float:left;
+			margin-right: 10px;
+			background: url(img/small.jpg) no-repeat;
+		}
+		
+		#big-picture{
+			position: absolute;
+		}
+		#big{
+			display: none;
+			position:relative;
+			margin-top:10px;
+			width:400px;
+			height:400px;
+			border: 1px solid #ccc;
+			float:left;
+			overflow: hidden;
+			/*background: url(img/big.jpg) no-repeat;*/
+
+		}
+		#move{
+			display: none;
+			position:absolute;
+			width:50px;
+			height:50px;
+			background-color: black;
+			opacity: 0.5;
+			cursor:pointer;
+		}
+	</style>
+</head>
+<body>
+	<div id="small">
+		<span id="move"></span>
+	</div>
+	<div id="big"><div id="big-picture"><img src="img/big.jpg"></div></div>
+	<script type="text/javascript">
+		var omove=document.getElementById('move');
+		var osmall=document.getElementById('small');
+		var obig=document.getElementById('big');
+		var obigPicture=document.getElementById('big-picture');
+		osmall.onmouseover=function(e){
+			omove.style.display="block";
+			obig.style.display="block";
+			e=e||window.event;
+			var ileft = e.clientX - osmall.offsetLeft - omove.offsetWidth/2;
+			var itop = e.clientY - osmall.offsetTop - omove.offsetHeight/2;
+
+
+			// var disX=e.clientX-osmall.offsetLeft;
+			// var disY=e.clientY-osmall.offsetTop;
+			// var ileft=e.clientX-disX;
+			// var itop=e.clientY-disY;
+			omove.style.left=ileft+'px';
+			omove.style.top=itop+'px';
+
+			osmall.onmousemove=function(e){
+				e=e||window.event;
+				var ileft = e.clientX - osmall.offsetLeft - omove.offsetWidth/2;
+				var itop = e.clientY - osmall.offsetTop - omove.offsetHeight/2;
+				// var ileft=e.clientX-disX;
+				// var itop=e.clientY-disY;
+				if(ileft<0){
+					ileft=0;
+				}
+				if(ileft>osmall.offsetWidth-omove.offsetWidth)
+				{
+					// alert("hah");
+					ileft=osmall.offsetWidth-omove.offsetWidth;
+				}
+				if(itop<0)
+				{
+					itop=0;
+				}
+				if(itop>osmall.offsetHeight-omove.offsetHeight)
+				{
+					itop=osmall.offsetHeight-omove.offsetHeight;
+				}
+				
+				omove.style.left=ileft+'px';
+				omove.style.top=itop+'px';
+
+				var fScaleX = ileft/(osmall.offsetWidth - omove.offsetWidth);
+				var fScaleY = itop/(osmall.offsetHeight - omove.offsetHeight);
+				obigPicture.style.left = -(obigPicture.offsetWidth - obig.offsetWidth) * fScaleX  + 'px';
+				obigPicture.style.top = -(obigPicture.offsetHeight - obig.offsetHeight) * fScaleY  + 'px';
+
+				// var iileft=obigPicture.offsetWidth*pas;
+				// var iitop=obigPicture.offsetWidth*pas;
+				// obigPicture.style.left=-iileft+'px';
+				// obigPicture.style.top=-iitop+'px';
+			};
+			osmall.onmouseout=function(){
+				obig.style.display="none";
+				omove.style.display="none";
+			};
+			
+				
+		};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>

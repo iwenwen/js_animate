@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	*{
+		margin:0;
+		padding:0;
+	}
+		#l1 .list1{
+			width:100px;
+			height:30px;
+			background:white url(img/1.png) no-repeat right 20px;
+			float:left;
+			margin-right: 5px;
+			line-height: 30px;
+			text-align: center;
+
+		}
+		ul{
+			list-style: none;
+		}
+		#l2{
+			border: 1px solid gray;
+			display:none;
+		}
+
+
+
+
+
+
+
+
+	</style>
+</head>
+<body>
+	<ul id="l1">
+		<li class="list1">
+			item1
+			<ul id="l2">
+				<li>111</li>
+				<li>111</li>
+				<li>111</li>
+
+			</ul>
+		</li>
+		<li class="list1">
+			item1
+			<ul id="l2">
+				<li>111</li>
+				<li>111</li>
+				<li>111</li>
+				
+			</ul>
+		</li>
+		<li class="list1">
+			item1
+			<ul id="l2">
+				<li>111</li>
+				<li>111</li>
+				<li>111</li>
+				
+			</ul>
+		</li>
+
+	</ul>
+	<script type="text/javascript">
+		var oL1=document.getElementById("l1");
+		var aLi=oL1.getElementsByTagName("li");
+		for(var i=0;i<aLi.length;i++)
+		{   if( aLi[i].className=="list1")
+	        {
+				
+				aLi[i].onmouseover=function(){
+					var a=this.getElementsByTagName("ul")[0];
+					a.style.display="block";
+					this.style.backgroundPosition="right -20px";
+
+				};
+				aLi[i].onmouseout=function(){
+					this.getElementsByTagName("ul")[0].style.display="none";
+					this.style.backgroundPosition="right 20px";
+
+				};
+
+
+
+		
+
+			}
+
+		}
+			
+
+
+	
+
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>

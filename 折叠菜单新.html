@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+		}
+		#ul-one{
+			position: relative;
+		}
+		ul{
+			list-style: none;
+		}
+		#li-1,#li-2{
+			border: 1px  black solid;
+			border-radius: 6px;
+			background-color: gray;
+			width:200px;
+			height:30px;
+			line-height: 30px;
+			text-align: center;
+		}
+		#li-1 li,#li-2 li{
+			height:20px;
+			border:1px solid black;
+		}
+		#li-1 li,#li-2 ul{
+			height:63px;
+			width:200px;
+		}
+		#li-2{
+			position: absolute;
+		}
+		.select{
+			display: none;
+		}
+		.active{
+			display: block;
+		}
+		h2{
+			width:200px;
+			height: 30px;
+		}
+
+
+	</style>
+</head>
+<body>
+	<ul id="ul-one">
+		<li id="li-1">
+			<h2 >haha</h2>
+			<ul class="select">
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</li>
+		<li id="li-2">
+			<h2 >hehe</h2>
+			<ul class="select">
+				<li></li>
+				<li></li>
+				<li></li>
+				
+			</ul>
+		</li>
+
+	</ul>
+	<script type="text/javascript">
+		var ouL=document.getElementById("ul-one");
+		var ali=ouL.getElementsByTagName('li');
+		var aH=ouL.getElementsByTagName('h2');
+		var aul=ouL.getElementsByTagName('ul');
+		var aulli=aul[1].getElementsByTagName('li');
+		for(i=0;i<aH.length;i++)
+		{
+			aH[i].index=i;
+			aH[i].onclick=function(){
+				// alert("haha");
+				if(aul[this.index].className=="select")
+				{
+					// alert("haha");
+					aul[this.index].style.display="block";
+					if(i==0)
+					{
+						ali[1].style.top=ali[1].offsetTop+aulli[0].offsetWidth*aulli.length+'px';
+					}
+				}
+				if(aul[this.index].className=="active")
+				{
+					aul[this.index].style.display="none";
+					if(i==0)
+					{
+						ali[1].style.top=ali[1].offsetTop-aulli[0].offsetWidth*aulli.length+'px';
+					}
+				}
+			};
+		}
+
+
+
+	</script>
+</body>
+</html>

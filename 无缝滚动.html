@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+		}
+		ul{
+			list-style: none;
+		}
+		#container{
+			width:400px;
+			height:200px;
+			margin:50px auto;
+			overflow:hidden;
+			position:relative;
+			border:1px dotted #ccc;
+		}
+		#tab{
+			position:absolute;
+			height:120px;
+			/*width:560px;*/
+		}
+		#tab li{
+			width:120px;
+			height:120px;
+			margin-right: 20px;
+			background-color: black;
+			color:white;
+			line-height: 120px;
+			text-align: center;
+			font-size: 48px;
+			float:left;
+		}
+		#arrow{
+			position:absolute;
+			left:50%;
+			margin-left: -105px;
+			bottom:20px;
+			width:210px;
+			height:30px;
+			/*margin:20px auto;*/
+		}
+		#arrow span{
+			width:100px;
+			height:30px;
+			background-color: #ddd;
+			text-align: center;
+			line-height: 30px;
+			margin-right: 10px;
+			float:left;
+		}
+		#arrow .r-span{
+			margin-right: 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<ul id="tab">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+
+		</ul>
+		<div id="arrow">
+			<span id="prev">&lt;&lt;向左</span>
+			<span  id="next" class="r-span">&gt;&gt;向右</span>
+
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	var oimgs=document.getElementById("tab");
+	var ali=oimgs.getElementsByTagName("li");
+	var oprev=document.getElementById("prev")
+	var onext=document.getElementById("next")
+
+	var a=2;
+	oimgs.innerHTML+=oimgs.innerHTML;
+	// alert(ali.length);
+	oimgs.style.width=(ali[0].offsetWidth+20)*ali.length+"px";
+	setInterval(function(){
+		oimgs.style.left=(oimgs.offsetLeft+a)+"px";
+		if(oimgs.offsetLeft<=-(oimgs.offsetWidth/2))
+			oimgs.style.left=0;
+		if(oimgs.offsetLeft>0)
+			oimgs.style.left=(-oimgs.offsetWidth/2)+"px";
+
+	},30);
+	oprev.onmouseover=function(){
+		a=-2;
+	};
+	onext.onmouseover=function(){
+		a=2;
+	};
+
+</script>
+</html>

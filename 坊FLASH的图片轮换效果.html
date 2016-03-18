@@ -1,0 +1,172 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+		}
+		a{
+			text-decoration: none;
+		}
+		#container{
+			width:400px;
+			height:454px;
+			overflow:hidden;
+			margin:30px auto;
+			position: relative;
+
+		}
+		#top-box{
+			/*width:400px;*/
+			height:320px;
+			/*width:3000px;*/
+			position: absolute;
+			/*overflow:hidden;*/
+		}
+	/*	#bottom-box{
+			width:1000px;
+		}
+		*/
+		#top-box img{
+			width:400px;
+			float:left;
+		}
+		#top p{
+			width:400px;
+			position: absolute;
+			height:20px;
+			opacity: 0.6;
+			background-color: gray;
+			color:white;
+			line-height: 20px;
+			bottom:0;
+			/*text-indent: 5px;*/
+		}
+		#top .span{
+			float:right;
+			margin-right:4px;
+
+		}
+		#bottom-box img{
+			float:left;
+			width:120px;
+			height:94px;
+			border:10px solid #ccc;
+			border-right: 0;
+		}
+		#top{
+			position:relative;
+			height:320px;
+		}
+		#bottom-box{
+			position:absolute;
+		}
+		#bottom-box img{
+			opacity:0.5;
+			
+		}
+		#bottom-box .imgop{
+			/*background-color: red;*/
+			/*display: none;*/
+			opacity: 1;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<div id="top">
+			<div id="top-box">
+				<img src="1img/1.jpg" title="聆听天籁" >
+				<img src="1img/2.jpg" title="炫彩阳光">
+				<img src="1img/3.jpg" title="运动风采">
+				<img src="1img/4.jpg" title="昔日璀璨">
+				<img src="1img/5.jpg" title="流光">
+				<img src="1img/6.jpg" title="溢彩">
+
+			</div>
+		
+			<p>aaa
+				<span class="span">
+					<span class="l.span">1</span>
+					<span>/</span>
+					<span class="r.span">6</span>
+				</span>
+				
+			</p>
+			<a href="#"></a>
+			<a href="#"></a>
+
+
+		</div>
+		<div id="bottom-box">
+			<img src="1img/1.jpg" title="聆听天籁" id="imgop">
+			<img src="1img/2.jpg" title="炫彩阳光" >
+			<img src="1img/3.jpg" title="运动风采" >
+			<img src="1img/4.jpg" title="昔日璀璨" >
+			<img src="1img/5.jpg" title="流光" >
+			<img src="1img/6.jpg" title="溢彩" >
+		</div>
+	</div>
+	<script type="text/javascript">
+		var obimg=document.getElementById('bottom-box');
+		var otimg=document.getElementById('top-box');
+		var atimg=otimg.getElementsByTagName('img');
+		var abimg=obimg.getElementsByTagName('img');
+		var index=0;
+		otimg.appendChild(atimg[0].cloneNode());
+		// var index=0;
+		obimg.appendChild(abimg[0].cloneNode());
+		obimg.appendChild(abimg[1].cloneNode());
+		obimg.appendChild(abimg[2].cloneNode());
+		// alert(atimg.length);
+
+		otimg.style.width=atimg.length*atimg[0].offsetWidth+'px';
+		obimg.style.width=abimg.length*abimg[0].offsetWidth+'px';
+		// alert(atimg[0].offsetWidth);
+		// for(var i=0;i<abimg.length.i++)
+		// {
+		// 	abimg[i].index=i;
+		// }
+		// function aa(idx){
+		// 	abimg[idx].className="imgop";
+		// }
+		var timer=setInterval(function(){
+			// aa(index);
+			
+			for(var i=0;i<abimg.length-3;i++)
+			{
+				abimg[i].className="";
+			}
+			abimg[index].className="imgop";
+			index++;
+			if(index==7)
+			{
+				index=0;
+			}
+			otimg.style.left=otimg.offsetLeft-atimg[0].offsetWidth+'px';
+			if(otimg.offsetLeft<=-(otimg.offsetWidth-atimg[0].offsetWidth))
+				{
+					otimg.style.left=0;
+			
+				}		
+
+			if(index>1&&index<6)
+			{   
+				obimg.style.left=-((index-2)*abimg[0].offsetWidth)+'px';
+				if(obimg.offsetLeft<=-(obimg.offsetWidth-3*abimg[0].offsetWidth))
+				{
+					obimg.style.left=0;
+			
+				}	
+			}	
+		},1000);
+		
+
+
+
+	</script>
+</body>
+</html>

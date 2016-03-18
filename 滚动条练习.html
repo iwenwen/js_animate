@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta charset="uft-8">
+	<style type="text/css">
+		body{
+			height:2000px;
+		}
+		a{
+			background-color: red;
+			position:fixed;
+			right:0;
+			bottom:50px;
+			height:40px;
+			width:40px;
+		}
+
+	</style>
+</head>
+<body>
+		haha
+	<a href="#" id="top">Go!</a>
+
+
+	<script type="text/javascript">
+		var a=document.getElementById("top");
+		a.onclick=function(){
+			var time=document.documentElement.scrollTop||document.body.scrollTop;
+		     var timer=	setInterval(function(){
+				scrollTo(0,time-=400);
+				if(time<=0)
+					clearInterval(timer);
+				// console.log(time);
+			},200);
+
+			return false;
+		};
+
+
+	</script>
+</body>
+</html>

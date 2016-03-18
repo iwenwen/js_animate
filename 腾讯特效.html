@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+		}
+		#container{
+			background-color: gray;
+			width:600px;
+			height:400px;
+			margin:0 auto;
+			position: relative;
+		}
+		#arrow{
+			/*position:absolute;
+			right:5px;
+			bottom:5px;*/
+			z-index:1;
+			float:right;
+			color:red;
+		}
+		#text{
+		    color:white;
+		    text-indent: 5px;
+			height:60px;
+			width:100%;
+			background-color: black;
+			position:absolute;
+			bottom:0px;
+			line-height: 60px;
+			opacity:0.8;
+		}
+		#imgs img{
+			width: 600px;
+			height: 400px;
+			display: none;
+		}
+		#imgs .select{
+			display: block;
+		}
+		#word{
+			float:left;
+		}
+		#arrow img{
+			width:20px;
+			height:16px;
+			background-color: black;
+		}
+
+
+	</style>
+</head>
+<body>
+   <div id="container">
+   	    <div id="imgs">
+   	    	<img src="img/1.jpeg" class="select" title="hahaha">
+   	    	<img src="img/2.jpeg" title="lalala">
+   	    	<img src="img/3.jpeg" title="111">
+   	    	<img src="img/4.jpeg" title="22">
+   	    	<img src="img/5.jpeg" title="333">
+
+   	    </div>
+   		
+   		<div id="text">
+	 	 	<span id="word"></span>
+			<div id="arrow">
+	   			<span id="prev"><img src="img/1.png"></span>
+	   			<span id="L"></span>
+	   			/
+	   			<span id="R"></span>
+	   			<span id="next"><img src="img/1.png"></span>
+   			</div>
+
+   		</div>
+   </div>
+   <script type="text/javascript">
+		var index=0;
+   		var oprev=document.getElementById("prev");
+   		var onext=document.getElementById("next");
+   		var oimg=document.getElementById("imgs");
+   		var aimg=oimg.getElementsByTagName("img");
+   		var con=document.getElementById("container");
+   		var otext=document.getElementById("word");
+   		var oL=document.getElementById("L");
+   		oL.innerHTML=1;
+   		var oR=document.getElementById("R");
+   		oR.innerHTML=aimg.length;
+
+   		for(var i=0;i<aimg.length;i++)
+   		{
+   			aimg[i].index=i;
+   		}
+   		function changeimg(idx){
+   			for(var i=0;i<aimg.length;i++)
+   			{   
+   				aimg[i].className="";
+   			}
+   			aimg[idx].className="select";
+   			otext.innerHTML=aimg[idx].title;
+   			oR.innerHTML=aimg.length;
+   			oL.innerHTML=idx+1;
+
+
+   		}
+   		oprev.onclick=function(){
+   			index--;
+   			if(index<0)
+   				index=aimg.length-1;
+   			changeimg(index);
+
+   		};
+   		onext.onclick=function(){
+   			index++;
+   			if(index==aimg.length)
+   				index=0;
+   			changeimg(index);
+
+   		};
+   		var timer;
+   		function play(){
+   			timer=setInterval(function(){
+   			onext.onclick();
+   		},1000);
+
+
+   		}
+   		play();
+   		con.onmouseover=function(){
+   			clearInterval(timer);
+   		};
+   		con.onmouseout=function(){
+   			play();
+   		};
+   		// oR.innerHTML=aimg.length;
+   </script>
+</body>
+</html>

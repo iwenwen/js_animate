@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		ul{
+			list-style: none;
+		}
+		img{
+			border:0;
+		}
+		*{
+			margin:0;
+			padding:0;
+		}
+		#container{
+			position: relative;
+			margin:100px auto;
+			width:336px;
+		}
+		#container li{
+			/*position: absolute;*/
+			width:100px;
+			height:100px;
+			float:left;
+			margin-right: 10px;
+			margin-bottom: 10px;
+			/*border:1px gray solid;*/
+		}
+		#container li img{
+			float:left;
+			width:100%;
+			height:100%;
+		}
+	</style>
+</head>
+<body>
+	<ul id="container">
+		<li><img src="../2img/1.jpg"></li>
+		<li><img src="../2img/2.jpg"></li>
+		<li><img src="../2img/3.jpg"></li>
+		<li><img src="../2img/4.jpg"></li>
+		<li><img src="../2img/5.jpg"></li>
+		<li><img src="../2img/6.jpg"></li>
+		<li><img src="../1img/1.jpg"></li>
+		<li><img src="../1img/2.jpg"></li>
+		<li><img src="../1img/3.jpg"></li>
+	</ul>
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+	<script type="text/javascript">
+		
+		$(function(){
+			$('#container li').each(function(){
+				this.left=$(this).position().left;
+				this.top=$(this).position().top;
+				$(this).css({
+					left: this.left,
+					top: this.top
+				});
+			});
+			$('#container li').css("position","absolute");
+		
+			$('#container li').hover(function(){
+				// this.style.width=150+'px';
+				// this.style.height=150+'px';
+				$(this).stop().animate({
+					left: this.left-25,
+					top: this.top-25,
+					width:150,
+					height:150
+				});
+				// $(this).css("zIndex",$(this).css("zIndex")+1);
+				this.style.zIndex++;
+			},function(){
+				// this.style.width=100+'px';
+				// this.style.height=100+'px';
+				$(this).stop().animate({
+					left: this.left,
+					top: this.top,
+					width:100,
+					height:100
+				});
+				// $(this).css("zIndex",$(this).css("zIndex")-1);
+				this.style.zIndex--;
+				
+			});
+
+		});
+		// var obox=document.getElementById('container');
+		// var ali=obox.getElementsByTagName('li');
+		// // var Zindex=0;
+		// for(var i=0;i<ali.length;i++)
+		// {
+		// 	ali[i].left=ali[i].offsetLeft+'px';
+		// 	ali[i].top=ali[i].offsetTop+'px';
+		// 	ali[i].style.left=ali[i].left;
+		// 	ali[i].style.top=ali[i].top;
+		// 	ali[i].onmouseover=function(){
+		// 		this.style.zIndex++;
+		// 		// this.style.width=this.offsetWidth+50+'px';
+		// 		// this.style.height=this.offsetHeight+50+'px';
+		// 		$(this).stop().animate({
+		// 			width : this.offsetWidth+50,
+		// 			height : this.offsetHeight+50,
+		// 			left: this.offsetLeft-25,
+		// 		    top: this.offsetTop-25
+		// 		});
+		// 		// this.style.left=this.offsetLeft-25+'px';
+		// 		// this.style.top=this.offsetTop-25+'px';
+		// 	}
+		// 	ali[i].onmouseout=function(){
+		// 		this.style.zIndex--;
+		// 		// this.style.width=this.offsetWidth-50+'px';
+		// 		// this.style.height=this.offsetHeight-50+'px';
+		// 		// this.style.top=this.offsetTop+25+'px';
+		// 		// this.style.left=this.offsetLeft+25+'px';
+		// 		$(this).stop().animate({
+		// 			width : 100,
+		// 			height :100,
+		// 			left: this.left,
+		// 		    top: this.top
+		// 		});
+
+
+		// 	}
+
+		// }
+		// for(var i=0;i<ali.length;i++)
+		// {
+		// 	ali[i].style.position="absolute";
+		// }
+	</script>
+</body>
+</html>

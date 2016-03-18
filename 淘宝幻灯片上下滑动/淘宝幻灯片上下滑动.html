@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+		}
+		ul{
+			list-style: none;
+		}
+		#container{
+			/*margin:50px auto;*/
+			position: relative;
+			left:50%;
+			margin-left: -235px;
+			margin-top: 100px;
+			height:150px;
+			width:470px;
+			overflow: hidden;
+		}
+		img{
+			display:block;
+		}
+		#tab{
+			position: absolute;
+			right:5px;
+			bottom: 5px;
+		}
+		#tab li{
+			float:left;
+			width:20px;
+			height:20px;
+			margin-right: 5px;
+			line-height: 20px;
+			text-align: center;
+			background-color:yellow;
+			color:#d94b01;
+		}
+		#imgs{
+			position:absolute;
+		}
+		#tab .select{
+			background-color:  #f47500;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<div id="imgs">
+			<img src="img/1.jpg">
+			<img src="img/2.jpg">
+			<img src="img/3.jpg">
+			<img src="img/4.jpg">
+			<img src="img/5.jpg">
+		</div>
+		
+		<ul id="tab">
+			<li class="select">1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ul>
+	</div>
+	<script type="text/javascript" src="jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			var index=0;
+			var oimg=document.getElementById('imgs');
+			var aimg=oimg.getElementsByTagName('img');
+			var timer;
+			function play(){
+				timer=setInterval(function(){
+				index++;
+				if(index>=aimg.length)
+				{
+					index=0;
+				}
+				$('#imgs').animate({top:-150*index},'linear');
+				$('#tab li:eq('+index+')').addClass('select').siblings().removeClass('select');
+			  },1000);		
+			}
+			play();
+			$('#tab li').on('mouseover',function(){
+				clearInterval(timer);
+				var index=$(this).index();
+				$(this).addClass('select').siblings().removeClass('select');
+				$('#imgs').animate({top:-index*150});
+			}).on('mouseout',function(){
+				play();
+			});
+		});
+	</script>
+</body>
+</html>
